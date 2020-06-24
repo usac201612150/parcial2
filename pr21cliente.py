@@ -96,7 +96,7 @@ class AudioClass (object):                                                    #C
     #    self.pushThread._stop()
 
 def enviaraudio(destinatario):                                              #DRRP Para enviar audio se utiliza otro metodo
-    print(destinatario)                                                     #     debido a el tipo de empaquetado que tiene
+    #print(destinatario)                                                     #     debido a el tipo de empaquetado que tiene
     audiosaliente=open("notadevoz.wav","rb")
     bitsdeaudio=audiosaliente.read()
     audiosaliente.close()
@@ -114,7 +114,7 @@ def Whatsmyname():                                                          #DRR
     return YoSoy    
 
 def on_connect(cliente,userdata,flags,rc):                                  #DRRP metodo de MQTT para la conexion con el Broken
-    logging.info("Conexion establecida")
+    logging.debug("Conexion establecida")
 
 def isAnAudio(source):                                                      #DRRP para saber que tipo de tratamiento se le da al 
     global userid                                                           #     mensaje es necesario saber si es de audio o no
@@ -161,7 +161,7 @@ def on_message(client,userdata,msg):
 
 def on_publish(client, userdata, mid):                                      #DRRP metodo de MQTT para la publicacion
     publishText = "Publicacion satisfactoria"
-    logging.info(publishText)
+    logging.debug(publishText)
 
 def confCliente():                                                        #DRRP Hice dos metodos distintos para la publicacion y recepcion
     global clientMQTT                                                #     porque no estoy seguro de si entrarian en conflicto
@@ -204,7 +204,7 @@ def publishData(topic,value,qos=0,retain=False):                            #DRR
 ##########################################################################
 logging.basicConfig(                                                        #DRRP configuracion del logging
     level = logging.INFO, 
-    format = '[%(levelname)s] (%(threadName)-10s) %(message)s'
+    format = '[%(levelname)s] %(message)s'
     )
 
        #DRRP inicializacion de metodos necesarios
